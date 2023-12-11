@@ -3,7 +3,7 @@
 from odoo import models, fields, api
 
 class odoo16(models.Model):
-    _name = 'odoo16.odoo16'
+    _name = 'odoo.16'
     _description = 'odoo16 odoo16'
 
     name = fields.Char()
