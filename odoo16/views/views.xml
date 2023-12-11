@@ -1,61 +1,99 @@
 <odoo>
-  <data>
-    <!-- explicit list view definition -->
+    <data>
+        <!-- explicit list view definition -->
+        <!--TREE VIEW-->
+        <record model="ir.ui.view" id="odoo16_list">
+            <field name="name">odoo16 list</field>
+            <field name="model">odoo.16</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="ref"/>
+                    <field name="gender"/>
+                </tree>
+            </field>
+        </record>
+        <!--    FORM VIEW-->
+        <record model="ir.ui.view" id="odoo16_form">
+            <field name="name">odoo16 form</field>
+            <field name="model">odoo.16</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="gender"/>
+                            </group>
+                            <group>
+                                <field name="age"/>
+                                <field name="ref"/>
+                                <field name="active" invisible="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--SEARCH VIEW-->
+        <record model="ir.ui.view" id="odoo16_search">
+            <field name="name">odoo16 search</field>
+            <field name="model">odoo.16</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name" string="Entry" filter_domain="['|',('name','ilike',self),('ref','ilike',self)]"/>
+                    <filter name="filter_male" string="Male" domain="[('gender','=','0')]"/>
+                    <filter name="filter_female" string="Female" domain="[('gender','=','1')]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Gender" name="groupby_gender" context="{'group_by':'gender'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
 
-    <record model="ir.ui.view" id="odoo16_list">
-      <field name="name">odoo16 list</field>
-      <field name="model">odoo.16</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-        </tree>
-      </field>
-    </record>
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="odoo16.action_window">
+            <field name="name">odoo16 Dev</field>
+            <field name="res_model">odoo.16</field>
+            <field name="view_mode">tree,form</field>
+        </record>
 
 
-    <!-- actions opening views on models -->
+        <!-- server action to the one above -->
+        <!--
+            <record model="ir.actions.server" id="odoo16.action_server">
+              <field name="name">odoo16 server</field>
+              <field name="model_id" ref="model_odoo16_odoo16"/>
+              <field name="state">code</field>
+              <field name="code">
+                action = {
+                  "type": "ir.actions.act_window",
+                  "view_mode": "tree,form",
+                  "res_model": model._name,
+                }
+              </field>
+            </record>
+        -->
 
-    <record model="ir.actions.act_window" id="odoo16.action_window">
-      <field name="name">odoo16 Dev</field>
-      <field name="res_model">odoo.16</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-
-
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="odoo16.action_server">
-      <field name="name">odoo16 server</field>
-      <field name="model_id" ref="model_odoo16_odoo16"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
-      </field>
-    </record>
--->
-
-    <!-- Top menu item -->
+        <!-- Top menu item -->
 
 
-    <menuitem name="odoo 16" id="odoo_menu_root" sequence="0"  web_icon="odoo16,static/description/odoo16.jpg"/>
+        <menuitem name="odoo 16" id="odoo_menu_root" sequence="0" web_icon="odoo16,static/description/odoo.jpeg"/>
 
-    <!-- menu categories -->
+        <!-- menu categories -->
 
-    <menuitem name="Menu 1" id="odoo16_menu_1" parent="odoo_menu_root"  />
-    <menuitem name="Menu 2" id="odoo16_menu_2" parent="odoo16_menu_1" action="odoo16.action_window" />
-<!--    <menuitem name="Menu 2" id="odoo16.menu_2" parent="odoo16.menu_root"/>-->
+        <menuitem name="Menu 1" id="odoo16_menu_1" parent="odoo_menu_root"/>
+        <menuitem name="Menu 2" id="odoo16_menu_2" parent="odoo16_menu_1" action="odoo16.action_window"/>
+        <!--    <menuitem name="Menu 2" id="odoo16.menu_2" parent="odoo16.menu_root"/>-->
 
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="odoo16.menu_1_list" parent="odoo16.menu_1"
-              action="odoo16.action_window"/>
-    <menuitem name="Server to list" id="odoo16" parent="odoo16.menu_2"
-              action="odoo16.action_server"/>
--->
-  </data>
+        <!-- actions -->
+        <!--
+            <menuitem name="List" id="odoo16.menu_1_list" parent="odoo16.menu_1"
+                      action="odoo16.action_window"/>
+            <menuitem name="Server to list" id="odoo16" parent="odoo16.menu_2"
+                      action="odoo16.action_server"/>
+        -->
+    </data>
 </odoo>
