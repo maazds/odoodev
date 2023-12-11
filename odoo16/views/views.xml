@@ -1,28 +1,27 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="odoo16.list">
-      <field name="name">odoo16 list</field>
-      <field name="model">odoo16.odoo16</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
-      </field>
-    </record>
+
+<!--    <record model="ir.ui.view" id="odoo16_list">-->
+<!--      <field name="name">odoo16 list</field>-->
+<!--      <field name="model">odoo16.odoo16</field>-->
+<!--      <field name="arch" type="xml">-->
+<!--        <tree>-->
+<!--          <field name="name"/>-->
+<!--          <field name="value"/>-->
+<!--        </tree>-->
+<!--      </field>-->
+<!--    </record>-->
 -->
 
     <!-- actions opening views on models -->
-<!--
+
     <record model="ir.actions.act_window" id="odoo16.action_window">
       <field name="name">odoo16 window</field>
       <field name="res_model">odoo16.odoo16</field>
       <field name="view_mode">tree,form</field>
     </record>
--->
+
 
     <!-- server action to the one above -->
 <!--
@@ -41,14 +40,14 @@
 -->
 
     <!-- Top menu item -->
-<!--
-    <menuitem name="odoo16" id="odoo16.menu_root"/>
--->
+
+    <menuitem name="odoo16" id="odoo16_menu_root"/>
+
     <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="odoo16.menu_1" parent="odoo16.menu_root"/>
-    <menuitem name="Menu 2" id="odoo16.menu_2" parent="odoo16.menu_root"/>
--->
+
+<!--    <menuitem name="Menu 1" id="odoo16_menu_1" parent="odoo16_menu_root" />-->
+<!--    <menuitem name="Menu 2" id="odoo16.menu_2" parent="odoo16.menu_root"/>-->
+
     <!-- actions -->
 <!--
     <menuitem name="List" id="odoo16.menu_1_list" parent="odoo16.menu_1"
